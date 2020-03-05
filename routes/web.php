@@ -30,3 +30,7 @@ Route::post('/biodata-mahasiswa/{id}/update', 'MahasiswaController@update')
 	->name("mahasiswa.update");
 Route::get('/biodata-mahasiswa/{id}/delete', 'MahasiswaController@destroy')
 	->name("mahasiswa.destroy");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home.index');
+Route::post('/home', 'HomeController@login')->name('login.login');
