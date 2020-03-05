@@ -7,6 +7,6 @@
 		<li>Nama Mahasiswa : {{$data->name}} </li>
 		<li>Nim Mahasiswa : {{$data->nim}} </li>
 		<li>Alamat Mahasiswa : {{$data->address}} </li>
-		<li>Foto Mahasiswa : <img src="{{ Storage::url($data->foto)}}" width="100dp" > </li>
+		<li>Foto Mahasiswa : <img src="{{ Storage::url($data->foto)}}" width="100dp" ></li>
 	</ul>
 @endsection
