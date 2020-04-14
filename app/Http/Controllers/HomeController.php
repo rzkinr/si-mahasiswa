@@ -24,17 +24,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('auth.login');
     }
-
     public function login(Request $request)
     {
         $credential = $request->only("username", "password");
-        if(Auth::attempt($credential)){
+        if (Auth::attempt($credential)) {
+            // Meneruskan ke halaman daftar mahasiswa jika sukses
             return redirect()->route("mahasiswa.index");
         } else {
+            // Mengembalikan ke halaman login jika gagal
             return redirect()->back();
         }
     }
-    
+
+    /**
+     * Logout user
+     */
+    public function logout()
+    {
+        Auth::logout(); // logout user
+
+        // redirect ke halaman login
+        return redirect()->route("login");
+    }
 }

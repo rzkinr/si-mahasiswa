@@ -1,8 +1,19 @@
 @extends("layout")
 @section("content")
 <a href="{{ route('mahasiswa.index') }}" class="btn btn-info btn-sm">kembali</a>
+@if($errors->any())
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <form action="{{ route('mahasiswa.update', ['id' =>$data->id])}}" method="post" accept-charset="utf-8">
 	@csrf
+	@method("PUT")
 	<div class="form-group">
 		<label class="control-label">Nama</label>
 		<input type="text" name="name" class="form-control" value="{{$data->name}}">

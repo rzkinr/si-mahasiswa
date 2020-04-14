@@ -16,21 +16,14 @@ Route::get('/', function () {
 });
 
 
-Route::get("/biodata-mahasiswa", "MahasiswaController@index")
-	->name("mahasiswa.index");
-Route::get('/biodata-mahasiswa/create', 'MahasiswaController@create')
-	->name("mahasiswa.create");
-Route::get('/biodata-mahasiswa/{id}/detail', 'MahasiswaController@show')
-	->name("mahasiswa.show");
-Route::post('/biodata-mahasiswa', 'MahasiswaController@store')
-	->name("mahasiswa.store");
-Route::get('/biodata-mahasiswa/{id}/edit', 'MahasiswaController@edit')
-	->name("mahasiswa.edit");
-Route::post('/biodata-mahasiswa/{id}/update', 'MahasiswaController@update')
-	->name("mahasiswa.update");
-Route::get('/biodata-mahasiswa/{id}/delete', 'MahasiswaController@destroy')
-	->name("mahasiswa.destroy");
-Auth::routes();
+Route::get("/login", "HomeController@index")
+    ->name("login");
+Route::post("/login", "HomeController@login")->name("login.login");
 
-Route::get('/home', 'HomeController@index')->name('home.index');
-Route::post('/home', 'HomeController@login')->name('login.login');
+Route::get("/logout", "HomeController@logout")->name("logout");
+
+Route::resource("mahasiswa", "MahasiswaController")->middleware("web");
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

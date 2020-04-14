@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mahasiswa;
-use DB;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UpdateMahasiswa;
+use DataTables;
+use App\DataTables\MhsDataTable;
 
 class MahasiswaController extends Controller
 {
@@ -16,7 +19,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswa = Mahasiswa::all();
-        return view("mahasiswa.index", compact("mahasiswa"));
+        return view('mahasiswa.index', compact('mahasiswa'));
     }
 
     /**
@@ -84,13 +87,13 @@ class MahasiswaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateMahasiswa  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMahasiswa $request, $id)
     {
-        Mahasiswa::where("id", $id)->update($request->except("_token"));
+        Mahasiswa::where("id", $id)->update($request->except("_token", "_method"));
         return redirect()->route("mahasiswa.index");
     }
 
