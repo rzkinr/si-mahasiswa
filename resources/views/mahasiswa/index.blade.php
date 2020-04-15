@@ -1,7 +1,9 @@
 @extends("layout")
 @section("content")
 <a href="{{ route('mahasiswa.create') }}" class="btn btn-info btn-sm float-right mb-3">Tambah Data</a>
-<table class="table table-striped table-hover data-table" id="myTable">
+<div class="card-body bg-aqua">
+<div class="table-responsive">
+<table class="table table-bordered table-striped" width="100%" id="myTable" cellspacing="0">
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -29,5 +31,8 @@
             @endforelse
 	</tbody>
 </table>
+</div>
+</div>
+
 @endsection
 
