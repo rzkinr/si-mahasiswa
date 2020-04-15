@@ -1,5 +1,6 @@
 @extends("layout")
 @section("content")
+<a href="{{ route('mahasiswa.excel') }}" class="btn btn-success">Export to Excel</a>
 <a href="{{ route('mahasiswa.create') }}" class="btn btn-info btn-sm float-right mb-3">Tambah Data</a>
 <div class="card-body bg-aqua">
 <div class="table-responsive">

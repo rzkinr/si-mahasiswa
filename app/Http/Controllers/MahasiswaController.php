@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateMahasiswa;
 use DataTables;
 use App\DataTables\MhsDataTable;
+use App\Exports\MahasiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class MahasiswaController extends Controller
 {
@@ -21,6 +24,11 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::all();
         return view('mahasiswa.index', compact('mahasiswa'));
     }
+
+    public function export_excel()
+	{
+		return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+	}
 
     /**
      * Show the form for creating a new resource.

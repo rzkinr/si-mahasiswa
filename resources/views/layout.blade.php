@@ -51,12 +51,7 @@
 </body>
 <script type="text/javascript">
   $(document).ready( function () {
-    $('#myTable').DataTable({
-        dom:'Bfrtip',
-        buttons: [
-            'excel'
-        ]
-    });
+    $('#myTable').DataTable();
 });
 </script>
 

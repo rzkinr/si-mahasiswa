@@ -24,6 +24,8 @@ Route::get("/logout", "HomeController@logout")->name("logout");
 
 Route::resource("mahasiswa", "MahasiswaController")->middleware("web");
 
+Route::get('/excel', 'MahasiswaController@export_excel')->name('mahasiswa.excel');
+
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
