@@ -11,6 +11,7 @@ use App\DataTables\MhsDataTable;
 use App\Exports\MahasiswaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Yajra\DataTables\Html\Builder;
 
 class MahasiswaController extends Controller
 {
@@ -19,10 +20,19 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Builder $builder)
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mahasiswa'));
+        if (request()->ajax()) {
+            return DataTables::of(Mahasiswa::query())->toJson();
+        }
+
+        $html = $builder->columns([
+            ["data" => "id", "name" => "id", "title" => "ID"],
+            ["data" => "name", "name" => "name", "title" => "NAMA"],
+            ["data" => "nim", "name" => "nim", "title" => "NIM"],
+        ]);
+
+        return view("mahasiswa.index", compact("html"));
     }
 
     public function export_excel()

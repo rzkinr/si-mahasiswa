@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60f771991d000cf1f857df3dadd2b45c",
+    "content-hash": "593ef634b1b46b8e8c68ccb29dc907a1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3716,16 +3716,16 @@
         },
         {
             "name": "yajra/laravel-datatables-html",
-            "version": "v4.24.0",
+            "version": "v4.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-html.git",
-                "reference": "a66ed58f7fe66acd77836b43366d3bd8d578a31b"
+                "reference": "e51ff1382ed9ad390972766ca8b174da6d643675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/a66ed58f7fe66acd77836b43366d3bd8d578a31b",
-                "reference": "a66ed58f7fe66acd77836b43366d3bd8d578a31b",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/e51ff1382ed9ad390972766ca8b174da6d643675",
+                "reference": "e51ff1382ed9ad390972766ca8b174da6d643675",
                 "shasum": ""
             },
             "require": {
@@ -3772,7 +3772,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2020-04-02T07:43:20+00:00"
+            "time": "2020-04-17T04:46:14+00:00"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
