@@ -23,13 +23,32 @@ class MahasiswaController extends Controller
     public function index(Builder $builder)
     {
         if (request()->ajax()) {
-            return DataTables::of(Mahasiswa::query())->toJson();
+            return DataTables::of(Mahasiswa::query())->editColumn("nim", function($data){
+                return "<strong> " . $data->nim . " </strong>";
+            })->addColumn("action", function($data) {
+                return "
+                  <a href = '" . route( "mahasiswa.show", ["id" => $data->id]) . "' class='btn btn-success'>Detail</a>  
+                  <a href = '" . route( "mahasiswa.edit", ["id" => $data->id]) . "' class='btn btn-warning'>Edit</a>
+                  <a href = '" . route( "mahasiswa.destroy", ["id" => $data->id]) . "' class='btn btn-danger'>Delete</a>
+                ";
+            })->rawColumns(["nim", "action"])->addIndexColumn()->toJson();
         }
 
         $html = $builder->columns([
-            ["data" => "id", "name" => "id", "title" => "ID"],
+            ["data" => "DT_RowIndex", "name" => "#", "title" => "#", "defaultContent" => "", "orderable" => false, 'searchable' => false,],
             ["data" => "name", "name" => "name", "title" => "NAMA"],
             ["data" => "nim", "name" => "nim", "title" => "NIM"],
+            [
+                'defaultContent' => '',
+                'data'           => 'action',
+                'name'           => 'action',
+                'title'          => 'Action',
+                'render'         => null,
+                'orderable'      => false,
+                'searchable'     => false,
+                'exportable'     => false,
+                'printable'      => true,
+            ],
         ]);
 
         return view("mahasiswa.index", compact("html"));

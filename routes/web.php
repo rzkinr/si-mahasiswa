@@ -29,3 +29,21 @@ Route::get('/excel', 'MahasiswaController@export_excel')->name('mahasiswa.excel'
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+//List mahasiswa
+// Route::middleware("auth")->group(function(){
+	Route::get("/mahasiswa", "MahasiswaController@index")
+	->name("mahasiswa.index");
+	Route::get("/biodata-mahasiswa/{id}/detail", "MahasiswaController@show")
+		->name("mahasiswa.show");
+	Route::get("/mahasiswa/create", "MahasiswaController@create")
+		->name("mahasiswa.create");
+	Route::post("/mahasiswa", "MahasiswaController@store")
+		->name("mahasiswa.store");
+	Route::get("/mahasiswa/{id}/edit", "MahasiswaController@edit")
+		->name("mahasiswa.edit");
+	Route::post("/mahasiswa/{id}/update", "MahasiswaController@update")
+		->name("mahasiswa.update");
+	Route::get("/mahasiswa/{id}/delete", "MahasiswaController@destroy")
+		->name("mahasiswa.destroy");
+// });
