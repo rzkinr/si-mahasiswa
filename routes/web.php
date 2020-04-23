@@ -47,3 +47,5 @@ Route::get('/excel', 'MahasiswaController@export_excel')->name('mahasiswa.excel'
 	Route::get("/mahasiswa/{id}/delete", "MahasiswaController@destroy")
 		->name("mahasiswa.destroy");
 // });
+
+Route::get("/mail/send", "MailController@send");
